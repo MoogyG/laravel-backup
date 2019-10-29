@@ -28,7 +28,7 @@ class UnhealthyBackupWasFoundTest extends TestCase
             ->fakeBackup()
             ->makeHealthCheckFail()
             ->artisan('backup:monitor')
-            ->assertExitCode(0);
+            ->assertExitCode(1);
 
         Event::assertDispatched(UnhealthyBackupWasFound::class);
     }
